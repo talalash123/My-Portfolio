@@ -1,0 +1,1755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>M. Talal Ashraf — Software Engineer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<style>
+        /* ── WHITE + MINIMAL GREEN LIGHT THEME ────────────── */
+        :root {
+            --bg: #ffffff;                     /* Pure White */
+            --bg2: #f7f9f8;                     /* Soft Off-White */
+            --card: rgba(16,24,20,0.02);        /* Subtle glass */
+            --border: rgba(16,24,20,0.08);  
+            --border-h: rgba(16,163,74,0.35);   /* Green accent */
+            --text: #101512;                    /* Near Black */
+            --muted: #5c6b63;                    /* Muted Slate-Green */
+            --dim: #98a29c;                       /* Light Gray-Green */
+            
+            /* MINIMAL GREEN PALETTE */
+            --a1: #16a34a;                       /* Fresh Green */
+            --a2: #15803d;                       /* Deep Green */
+            --a3: #86efac;                       /* Soft Mint */
+            
+            /* SOFT GRADIENTS */
+            --grad: linear-gradient(135deg, #22c55e 0%, #16a34a 50%, #15803d 100%);
+            --grad2: linear-gradient(135deg, #86efac 0%, #22c55e 100%);
+            
+            /* TYPOGRAPHY */
+            --ff-head: 'Inter', sans-serif;
+            --ff-body: 'Inter', sans-serif;
+            --r: 16px;
+            --r2: 24px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--ff-body);
+            overflow-x: hidden;
+            font-size: 15px;
+            line-height: 1.6
+        }
+
+        /* ── SUBTLE LIGHT TEXTURE ───────────────────────────────── */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(34,197,94,0.04) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(21,128,61,0.03) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* ── GREEN SCROLLBAR ──────────────────────────────────── */
+        ::-webkit-scrollbar {
+            width: 4px
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg2)
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--a3);
+            border-radius: 4px;
+            opacity: 0.8;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--a1);
+            opacity: 1;
+        }
+
+        /* ── EXECUTIVE NAV ────────────────────────────────────── */
+        nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 6%;
+    height: 80px;
+    background: linear-gradient(180deg, 
+        rgba(255,255,255,0.98) 0%, 
+        rgba(247,249,248,0.95) 100%);
+    backdrop-filter: blur(32px) saturate(200%);
+    border-bottom: 1px solid rgba(16,163,74,0.15);
+    box-shadow: 
+        0 0 0 1px rgba(16,163,74,0.05),
+        0 8px 32px rgba(16,24,20,0.05),
+        inset 0 1px 0 rgba(255,255,255,0.5);
+}
+
+.nav-logo {
+    font-family: var(--ff-head);
+    font-weight: 900;
+    font-size: 1.2rem;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: 2px;
+    position: relative;
+    padding: 12px 0;
+}
+
+.nav-logo::before {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--grad);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+    border-radius: 1px;
+}
+
+.nav-logo:hover::before {
+    transform: scaleX(1);
+}
+
+.nav-logo em {
+    font-style: normal;
+    background: var(--grad);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    z-index: 2;
+}
+
+.nav-links {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+.nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: all .4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    padding: 12px 0;
+}
+
+.nav-links a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--grad);
+    border-radius: 1px;
+    transition: all .4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateX(-50%);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 0;
+    background: rgba(16,163,74,0.06);
+    transition: height .4s ease;
+    border-radius: 8px 8px 0 0;
+}
+
+.nav-links a:hover {
+    color: var(--text);
+}
+
+.nav-links a:hover::before {
+    width: 100%;
+    box-shadow: 0 0 12px rgba(16,163,74,0.4);
+}
+
+.nav-links a:hover::after {
+    height: 100%;
+}
+
+.nav-icons {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.nav-icons a {
+    color: var(--muted);
+    font-size: 1.1rem;
+    transition: all .4s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none;
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border);
+    background: rgba(16,24,20,0.02);
+}
+
+.nav-icons a::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--grad);
+    opacity: 0;
+    transition: opacity .4s ease;
+    border-radius: 14px;
+}
+
+.nav-icons a:hover {
+    color: #fff;
+    border-color: rgba(16,163,74,0.3);
+    transform: translateY(-4px) rotate(5deg);
+    box-shadow: 
+        0 16px 32px rgba(16,163,74,0.25),
+        0 0 0 1px rgba(16,163,74,0.15);
+}
+
+.nav-icons a:hover::before {
+    opacity: 1;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
+    padding: 8px;
+}
+
+.hamburger span {
+    width: 24px;
+    height: 2px;
+    background: var(--muted);
+    transition: all .3s ease;
+    border-radius: 2px;
+}
+
+@media(max-width: 960px) {
+    .nav-links {
+        display: none;
+    }
+    
+    .hamburger {
+        display: flex;
+    }
+    
+    nav {
+        height: 70px;
+        padding: 0 5%;
+    }
+}
+
+        /* ── HERO ───────────────────────────────────────────── */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 140px 6% 80px;
+            position: relative;
+            overflow: hidden
+        }
+
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            pointer-events: none
+        }
+
+        .blob-1 {
+            width: 800px;
+            height: 800px;
+            background: var(--a3);
+            top: -300px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0.25;
+            animation: float 7s ease-in-out infinite;
+        }
+
+        .blob-2 {
+            width: 500px;
+            height: 500px;
+            background: var(--a1);
+            bottom: -150px;
+            right: -100px;
+            opacity: 0.10;
+            animation: float 9s ease-in-out infinite reverse;
+        }
+
+        .blob-3 {
+            width: 400px;
+            height: 400px;
+            background: var(--a2);
+            bottom: -100px;
+            left: -100px;
+            opacity: 0.08;
+            animation: float 11s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateX(-50%) translateY(0) scale(1); }
+            33% { transform: translateX(-50%) translateY(-15px) scale(1.02); }
+            66% { transform: translateX(-50%) translateY(-5px) scale(0.98); }
+        }
+
+        .hero-left {
+            z-index: 1;
+            max-width: 860px;
+            width: 100%
+        }
+
+        .avail-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid rgba(16,163,74,0.25);
+            background: rgba(16,163,74,0.06);
+            border-radius: 100px;
+            padding: 8px 20px;
+            font-size: 0.72rem;
+            font-weight: 500;
+            color: var(--a2);
+            letter-spacing: 0.8px;
+            margin-bottom: 32px;
+            box-shadow: 0 4px 16px rgba(16,163,74,0.08);
+            backdrop-filter: blur(10px);
+        }
+
+        .avail-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--a1);
+            animation: ping 2s infinite
+        }
+
+        @keyframes ping {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: .3; transform: scale(1.2); }
+        }
+
+        .hero h1 {
+            font-family: var(--ff-head);
+            font-size: clamp(3.5rem, 7vw, 6.5rem);
+            font-weight: 800;
+            line-height: .92;
+            letter-spacing: -2px;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 .name-color {
+            background: var(--grad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero h1 .name-plain {
+            color: var(--text);
+        }
+
+        .role-line {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+            font-size: 0.82rem;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--muted)
+        }
+
+        .role-line::before, .role-line::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+
+        .type-row {
+            font-size: 1.25rem;
+            color: var(--muted);
+            margin-bottom: 32px;
+            min-height: 1.8rem;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        .type-row b {
+            color: var(--a2);
+            border-right: 2px solid var(--a1);
+            padding-right: 4px;
+            animation: blink 1s infinite;
+            font-weight: 500;
+        }
+
+        @keyframes blink {
+            0%, 50% { border-color: var(--a1); }
+            51%, 100% { border-color: transparent; }
+        }
+
+        .hero-desc {
+            color: var(--muted);
+            font-size: 1rem;
+            line-height: 1.9;
+            max-width: 620px;
+            margin: 0 auto 48px;
+            font-weight: 300
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center
+        }
+
+        .hero-stats {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            margin-top: 64px;
+            background: rgba(16,24,20,0.02);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 32px 48px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 8px 32px rgba(16,24,20,0.05);
+        }
+
+        .hstat {
+            text-align: center;
+            padding: 0 40px
+        }
+
+        .hstat strong {
+            display: block;
+            font-family: var(--ff-head);
+            font-size: 2.25rem;
+            font-weight: 800;
+            background: var(--grad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
+            margin-bottom: 6px;
+        }
+
+        .hstat span {
+            font-size: 0.7rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600
+        }
+
+        .hstat-div {
+            width: 1px;
+            height: 48px;
+            background: var(--border);
+            flex-shrink: 0
+        }
+
+        /* ── BUTTONS ───────────────────────────────────── */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--ff-body);
+            font-weight: 500;
+            font-size: 0.82rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-radius: 14px;
+            padding: 15px 32px;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: all .3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            font-feature-settings: 'liga' off;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.6s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px) scale(1.02);
+        }
+
+        .btn-filled {
+            background: var(--grad);
+            color: #fff;
+            box-shadow: 
+                0 12px 32px rgba(16,163,74,0.25),
+                inset 0 1px 0 rgba(255,255,255,0.25);
+        }
+
+        .btn-filled:hover {
+            box-shadow: 
+                0 20px 44px rgba(16,163,74,0.35),
+                inset 0 1px 0 rgba(255,255,255,0.35);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--a1);
+            color: var(--a2);
+            background: rgba(16,163,74,0.06);
+            box-shadow: 0 0 24px rgba(16,163,74,0.15);
+        }
+
+        .btn-sm {
+            padding: 10px 20px;
+            font-size: 0.75rem;
+            border-radius: 12px;
+            gap: 8px
+        }
+
+        .btn-ghost-sm {
+            background: rgba(16,24,20,0.02);
+            color: var(--muted);
+            border: 1px solid var(--border)
+        }
+
+        .btn-ghost-sm:hover {
+            border-color: var(--a1);
+            color: var(--a2);
+            background: rgba(16,163,74,0.08);
+        }
+
+        .btn-accent-sm {
+            background: rgba(16,163,74,0.1);
+            color: var(--a2);
+            border: 1px solid rgba(16,163,74,0.25);
+        }
+
+        .btn-accent-sm:hover {
+            background: rgba(16,163,74,0.18);
+            box-shadow: 0 6px 16px rgba(16,163,74,0.2);
+        }
+
+        /* ── CODE CARD ──────────────────────────────── */
+        .code-card {
+            background: linear-gradient(145deg, #ffffff, #f7f9f8);
+            border: 1px solid var(--border);
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 
+                0 0 0 1px rgba(16,24,20,0.02),
+                0 30px 64px rgba(16,24,20,0.08),
+                inset 0 1px 0 rgba(255,255,255,0.5);
+            margin: 0 auto 140px;
+            max-width: 860px;
+            backdrop-filter: blur(20px);
+        }
+
+        .cc-bar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 24px;
+            background: rgba(16,24,20,0.015);
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%
+        }
+
+        .d1 { background: #ff6b6b }
+        .d2 { background: #ffd93d }
+        .d3 { background: #16a34a }
+
+        .cc-title {
+            margin-left: 12px;
+            font-size: 0.75rem;
+            color: var(--muted);
+            font-family: 'JetBrains Mono', 'DM Mono', monospace;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+        }
+
+        .cc-body {
+            padding: 28px 28px 20px;
+            background: #0f1512;
+        }
+
+        .cc-code {
+            font-family: 'JetBrains Mono', 'DM Mono', monospace;
+            font-size: 0.85rem;
+            line-height: 1.8;
+            white-space: pre;
+            overflow-x: auto;
+            color: #e5e5e5;
+        }
+
+        .c-kw { color: #4ade80; font-weight: 600; }
+        .c-var { color: #86efac }
+        .c-key { color: #b8bccf }
+        .c-str { color: #bbf7d0 }
+        .c-num { color: #fbbf24 }
+        .c-bool { color: #4ade80 }
+        .c-op { color: #a8a8a8 }
+
+        .cc-run {
+            margin-top: 20px;
+            padding: 14px 16px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border: 1px solid rgba(255,255,255,0.06);
+            backdrop-filter: blur(10px);
+        }
+
+        .run-label {
+            font-size: 0.7rem;
+            color: #9ca8a1;
+            font-family: 'JetBrains Mono', monospace;
+            white-space: nowrap;
+            font-weight: 500;
+        }
+
+        .run-out {
+            font-size: 0.8rem;
+            color: #4ade80;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 500;
+        }
+
+        .cursor-blink {
+            animation: blink 1s infinite;
+            color: #4ade80;
+            background: rgba(74,222,128,0.15);
+            padding: 1px 2px;
+            border-radius: 2px;
+        }
+
+        .cc-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border-top: 1px solid var(--border);
+            background: rgba(16,24,20,0.015);
+        }
+
+        .cstat {
+            padding: 20px 12px;
+            text-align: center;
+            border-right: 1px solid var(--border);
+            transition: all .3s ease;
+        }
+
+        .cstat:hover {
+            background: rgba(16,163,74,0.04);
+        }
+
+        .cstat:last-child {
+            border-right: none
+        }
+
+        .cstat strong {
+            display: block;
+            font-family: var(--ff-head);
+            font-size: 1.4rem;
+            font-weight: 800;
+            background: var(--grad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        .cstat small {
+            font-size: 0.6rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 1.8px;
+            font-weight: 600;
+            margin-top: 4px;
+        }
+
+        /* ── SECTIONS ───────────────────────────────────────── */
+        .sec {
+            padding: 100px 6%;
+            position: relative;
+        }
+
+        .sec-eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 18px
+        }
+
+        .sec-eyebrow::before {
+            content: '';
+            width: 32px;
+            height: 3px;
+            background: var(--grad);
+            border-radius: 2px;
+        }
+
+        .sec-eyebrow span {
+            font-size: 0.75rem;
+            color: var(--a2);
+            font-weight: 600;
+            letter-spacing: 3.5px;
+            text-transform: uppercase;
+        }
+
+        .sec-title {
+            font-family: var(--ff-head);
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 800;
+            letter-spacing: -2px;
+            margin-bottom: 60px;
+            line-height: 1.05;
+            color: var(--text);
+        }
+
+        .sec-title span {
+            background: var(--grad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* ── ABOUT ──────────────────────────────────────────── */
+        .about-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .about-wrap {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .about-body p {
+            color: var(--muted);
+            font-size: 1rem;
+            line-height: 1.95;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .about-body p strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .about-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 28px;
+        }
+
+        .tag {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 20px;
+            background: rgba(16,24,20,0.02);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            font-size: 0.82rem;
+            color: var(--muted);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(10px);
+        }
+
+        .tag:hover {
+            border-color: var(--a1);
+            color: var(--a2);
+            background: rgba(16,163,74,0.08);
+            box-shadow: 0 8px 20px rgba(16,163,74,0.15);
+            transform: translateY(-3px) scale(1.02);
+        }
+
+        .tag i {
+            color: var(--a2);
+            font-size: 0.85rem;
+        }
+
+        .stats-2x2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .scard {
+            background: #ffffff;
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: var(--r2);
+            padding: 40px 24px;
+            text-align: center;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(16,24,20,0.04);
+        }
+
+        .scard::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--grad);
+            transform: scaleX(0);
+            transition: transform 0.5s ease;
+        }
+
+        .scard:hover::before {
+            transform: scaleX(1);
+        }
+
+        .scard:hover {
+            border-color: var(--a1);
+            transform: translateY(-12px);
+            box-shadow: 0 24px 48px rgba(16,163,74,0.14);
+        }
+
+        .scard strong {
+            display: block;
+            font-family: var(--ff-head);
+            font-size: 2.8rem;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            background: var(--grad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }
+
+        .scard small {
+            font-size: 0.7rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            font-weight: 600;
+        }
+
+        /* ── SKILLS ─────────────────────────────────────────── */
+        .skills-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px
+        }
+
+        .sk-card {
+            background: #ffffff;
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: var(--r2);
+            padding: 36px;
+            transition: all .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(16,24,20,0.04);
+        }
+
+        .sk-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: var(--grad);
+            transition: height .4s ease;
+        }
+
+        .sk-card:hover::before {
+            height: 100%;
+        }
+
+        .sk-card:hover {
+            border-color: var(--a1);
+            transform: translateY(-8px);
+            box-shadow: 0 24px 40px rgba(16,163,74,0.14);
+        }
+
+        .sk-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            background: rgba(16,163,74,0.1);
+            border: 1px solid rgba(16,163,74,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            color: var(--a2);
+            margin-bottom: 20px;
+            transition: all .4s ease;
+        }
+
+        .sk-card:hover .sk-icon {
+            background: var(--grad);
+            color: #fff;
+            box-shadow: 0 0 24px rgba(16,163,74,0.35);
+            transform: scale(1.15) rotate(5deg);
+        }
+
+        .sk-card h4 {
+            font-family: var(--ff-head);
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-bottom: 20px;
+            color: var(--text)
+        }
+
+        .pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px
+        }
+
+        .pill {
+            padding: 6px 14px;
+            background: rgba(16,24,20,0.02);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--muted);
+            transition: all .3s ease;
+            letter-spacing: 0.3px;
+        }
+
+        .pill:hover {
+            border-color: var(--a1);
+            color: var(--a2);
+            background: rgba(16,163,74,0.08);
+            transform: translateY(-1px);
+        }
+
+        /* ── PROJECTS ───────────────────────────────────────── */
+        .proj-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px
+        }
+
+        .pcard {
+            background: #ffffff;
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: var(--r2);
+            padding: 36px;
+            display: flex;
+            flex-direction: column;
+            transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(16,24,20,0.04);
+        }
+
+        .pcard::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--grad);
+            transform: scaleX(0);
+            transition: transform .5s ease;
+        }
+
+        .pcard:hover::before {
+            transform: scaleX(1);
+        }
+
+        .pcard:hover {
+            border-color: var(--a1);
+            transform: translateY(-12px);
+            box-shadow: 0 28px 56px rgba(16,163,74,0.14);
+        }
+
+        .pcard-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px
+        }
+
+        .pcard-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(16,163,74,.12), rgba(21,128,61,.12));
+            border: 1px solid rgba(16,163,74,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--a2);
+            transition: all .4s ease;
+        }
+
+        .pcard:hover .pcard-icon {
+            background: var(--grad);
+            color: #fff;
+            box-shadow: 0 0 24px rgba(16,163,74,0.35);
+            transform: scale(1.15);
+        }
+
+        .pcard-num {
+            font-family: var(--ff-head);
+            font-size: 0.75rem;
+            color: var(--dim);
+            font-weight: 700;
+            letter-spacing: 1.5px
+        }
+
+        .pcard h3 {
+            font-family: var(--ff-head);
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            letter-spacing: -0.4px;
+            line-height: 1.3;
+            color: var(--text);
+        }
+
+        .pcard p {
+            color: var(--muted);
+            font-size: 0.88rem;
+            line-height: 1.8;
+            flex: 1;
+            margin-bottom: 24px;
+            font-weight: 300
+        }
+
+        .pcard-footer {
+            display: flex;
+            flex-direction: column;
+            gap: 14px
+        }
+
+        .ptags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px
+        }
+
+        .ptag {
+            padding: 5px 12px;
+            background: rgba(16,163,74,0.08);
+            border: 1px solid rgba(16,163,74,0.2);
+            border-radius: 8px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--a2);
+            letter-spacing: 0.3px;
+            transition: all .3s ease;
+        }
+
+        .ptag:hover {
+            background: var(--grad);
+            color: #fff;
+            transform: scale(1.08);
+            box-shadow: 0 4px 12px rgba(16,163,74,0.25);
+        }
+
+        .pcard-btns {
+            display: flex;
+            gap: 10px
+        }
+
+        /* ── CONTACT ────────────────────────────────────────── */
+        .contact-wrap {
+            display: grid;
+            grid-template-columns: 1fr 1.4fr;
+            gap: 70px;
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 36px;
+            padding: 64px;
+            backdrop-filter: blur(30px);
+            box-shadow: 0 24px 64px rgba(16,24,20,0.08);
+        }
+
+        .contact-left h3 {
+            font-family: var(--ff-head);
+            font-size: 2.1rem;
+            font-weight: 800;
+            letter-spacing: -1.2px;
+            margin-bottom: 16px;
+            line-height: 1.15;
+            color: var(--text);
+        }
+
+        .contact-left h3 span {
+            background: var(--grad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent
+        }
+
+        .contact-left p {
+            color: var(--muted);
+            font-size: 0.95rem;
+            margin-bottom: 36px;
+            line-height: 1.85;
+            font-weight: 300
+        }
+
+        .clinks {
+            display: flex;
+            flex-direction: column;
+            gap: 16px
+        }
+
+        .cl {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            text-decoration: none;
+            color: var(--text);
+            font-size: 0.92rem;
+            font-weight: 400;
+            transition: all .3s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 14px 16px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+        }
+
+        .cl:hover {
+            color: var(--a2);
+            background: rgba(16,163,74,0.06);
+            border-color: rgba(16,163,74,0.2);
+            transform: translateX(8px);
+            box-shadow: 0 10px 24px rgba(16,163,74,0.1);
+        }
+
+        .cl-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            flex: none;
+            background: rgba(16,163,74,0.1);
+            border: 1px solid rgba(16,163,74,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            color: var(--a2);
+            transition: all .3s ease;
+        }
+
+        .cl:hover .cl-icon {
+            background: var(--grad);
+            color: #fff;
+            box-shadow: 0 0 16px rgba(16,163,74,0.35);
+            transform: scale(1.1);
+        }
+
+        .form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px
+        }
+
+        .frow {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px
+        }
+
+        .form input, .form textarea {
+            background: #f7f9f8;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 16px 20px;
+            color: var(--text);
+            font-family: var(--ff-body);
+            font-size: 0.92rem;
+            outline: none;
+            transition: all .3s ease;
+            width: 100%;
+            font-weight: 400;
+            backdrop-filter: blur(10px);
+        }
+
+        .form input:focus, .form textarea:focus {
+            border-color: var(--a1);
+            background: #ffffff;
+            box-shadow: 
+                0 0 0 4px rgba(16,163,74,0.1),
+                0 0 0 1px var(--a1);
+            transform: translateY(-1px);
+        }
+
+        .form input::placeholder, .form textarea::placeholder {
+            color: var(--dim)
+        }
+
+        .form textarea {
+            resize: vertical;
+            min-height: 120px
+        }
+
+        .form-btn {
+            background: var(--grad);
+            color: #fff;
+            border: none;
+            padding: 16px 24px;
+            border-radius: 16px;
+            font-family: var(--ff-head);
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            cursor: pointer;
+            transition: all .3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 
+                0 12px 32px rgba(16,163,74,0.25),
+                inset 0 1px 0 rgba(255,255,255,0.25);
+        }
+
+        .form-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 
+                0 20px 44px rgba(16,163,74,0.35),
+                inset 0 1px 0 rgba(255,255,255,0.35);
+        }
+
+        /* ── FOOTER ─────────────────────────────────────────── */
+        footer {
+            text-align: center;
+            padding: 48px 6%;
+            border-top: 1px solid var(--border);
+            background: var(--bg2);
+            backdrop-filter: blur(20px);
+        }
+
+        footer p {
+            color: var(--dim);
+            font-size: 0.75rem;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        footer strong {
+            background: var(--grad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700
+        }
+
+        /* ── RESPONSIVE ─────────────────────────────────────── */
+        @media(max-width: 1024px) {
+            .about-wrap, .contact-wrap {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media(max-width: 960px) {
+            .skills-3, .proj-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .code-card {
+                margin: 0 6% 100px;
+                max-width: none;
+            }
+        }
+
+        @media(max-width: 600px) {
+            .skills-3, .proj-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .frow {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                letter-spacing: -1.5px;
+                font-size: clamp(2.8rem, 8vw, 4.5rem);
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+                gap: 12px;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 24px;
+                padding: 24px 32px;
+            }
+
+            .hstat {
+                padding: 0 !important;
+            }
+
+            .sec {
+                padding: 80px 6%;
+            }
+
+            .contact-wrap {
+                padding: 40px 32px;
+                gap: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ─── NAV ──────────────────────────────────────────── -->
+    <nav>
+        <a href="#home" class="nav-logo">TALAL <em>ASHRAF</em></a>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div class="nav-icons">
+            <a href="https://github.com/talalash123" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com/in/talal-ashraf" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:talalash101@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+    </nav>
+
+    <!-- ─── HERO ─────────────────────────────────────────── -->
+    <section class="hero" id="home">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+
+        <div class="hero-left">
+            <div class="avail-pill">
+                <span class="avail-dot"></span>
+                Available for opportunities
+            </div>
+
+            <h1>
+                <span class="name-plain">M. TALAL</span><br>
+                <span class="name-color">ASHRAF.</span>
+            </h1>
+
+            <div class="role-line">Developer</div>
+
+            <div class="type-row">I craft <b id="type-el"></b></div>
+
+            <p class="hero-desc">
+                Specializing in high-performance backend systems, full-stack architectures, and mobile development. I turn complex requirements into clean, maintainable, and scalable solutions.
+            </p>
+
+            <div class="hero-cta">
+                <a href="#projects" class="btn btn-filled">
+                    <i class="fas fa-folder-open"></i> View Projects
+                </a>
+                <a href="#contact" class="btn btn-outline">
+                    <i class="fas fa-paper-plane"></i> Hire Me
+                </a>
+                <a href="https://github.com/talalash123" target="_blank" class="btn btn-outline">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+            </div>
+
+
+        </div>
+    </section>
+
+    <!-- ─── About ────────────────────────────────────────── -->
+    <section class="sec" id="about">
+   <div class="sec-eyebrow"><span>Profile</span></div>
+
+        <div class="about-container">
+            <div class="about-wrap">
+
+                <div class="about-body">
+                    <h2 class="sec-title">Passionate about<br><span>clean code.</span></h2>
+                    <p>I'm a <strong>Developer</strong> with a BSCS degree and 1+ year of professional experience building enterprise-grade applications. I bridge the gap between complex backend logic and user-facing functionality.</p>
+                    <p>My focus is on writing <strong>maintainable, secure, and efficient code</strong>. I prioritize quality and precision in every line.</p>
+
+                    <div class="about-tags">
+                        <span class="tag"><i class="fas fa-map-marker-alt"></i> Rawalpindi</span>
+                        <span class="tag"><i class="fas fa-graduation-cap"></i> 3.55 CGPA</span>
+                        <span class="tag"><i class="fas fa-briefcase"></i> 1+ Year Exp</span>
+                        <span class="tag"><i class="fas fa-mobile-alt"></i> Android</span>
+                    </div>
+                </div>
+
+                <div class="stats-2x2">
+                    <div class="scard"><strong>1+</strong><small>Year Exp.</small></div>
+                    <div class="scard"><strong>25+</strong><small>Projects</small></div>
+                    <div class="scard"><strong>3.55</strong><small>CGPA</small></div>
+                    <div class="scard"><strong>70-80%</strong><small>Clean Code</small></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── SKILLS ────────────────────────────────────────── -->
+    <section class="sec" id="skills">
+        <div class="sec-eyebrow"><span>Technical Stack</span></div>
+        <h2 class="sec-title">Core <span>Skills.</span></h2>
+        <div class="skills-3">
+            <div class="sk-card">
+                <div class="sk-icon"><i class="fas fa-server"></i></div>
+                <h4>Backend &amp; Languages</h4>
+                <div class="pills">
+                    <span class="pill">C# / .NET Core</span>
+                    <span class="pill">Node.js</span>
+                    <span class="pill">Python</span>
+                    <span class="pill">Java</span>
+                    <span class="pill">JavaScript</span>
+                    <span class="pill">Flask</span>
+                    <span class="pill">C++</span>
+                </div>
+            </div>
+            <div class="sk-card">
+                <div class="sk-icon"><i class="fas fa-database"></i></div>
+                <h4>Databases &amp; APIs</h4>
+                <div class="pills">
+                    <span class="pill">MongoDB</span>
+                    <span class="pill">SQL Server</span>
+                    <span class="pill">Firebase</span>
+                </div>
+            </div>
+            <div class="sk-card">
+                <div class="sk-icon"><i class="fas fa-tools"></i></div>
+                <h4>Tools &amp; Environment</h4>
+                <div class="pills">
+                    <span class="pill">Android Studio</span>
+                    <span class="pill">Visual Studio</span>
+                    <span class="pill">Dev</span>
+                    <span class="pill">Visual Studio Code</span>
+                    <span class="pill">Git / GitHub</span>
+                    <span class="pill">VS Code</span>
+                    <span class="pill">Docker</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── PROJECTS ──────────────────────────────────────── -->
+    <section class="sec" id="projects">
+        <div class="sec-eyebrow"><span>Portfolio</span></div>
+        <h2 class="sec-title">Featured <span>Projects.</span></h2>
+        <div class="proj-grid">
+
+            <div class="pcard">
+                <div class="pcard-top">
+                    <div class="pcard-icon"><i class="fas fa-music"></i></div>
+                    <span class="pcard-num">01</span>
+                </div>
+                <h3>Vibestream</h3>
+                <p>Full-featured music streaming Android app with Firebase cloud sync and a custom audio player engine built from scratch.</p>
+                <div class="pcard-footer">
+                    <div class="ptags">
+                        <span class="ptag">Android</span>
+                        <span class="ptag">Firebase</span>
+                        <span class="ptag">Java</span>
+                    </div>
+                    <div class="pcard-btns">
+                        <a href="https://github.com/talalash123/Vibe_streams-App" target="_blank" class="btn btn-sm btn-accent-sm">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                        <a href="#" class="btn btn-sm btn-ghost-sm">
+                            <i class="fas fa-external-link-alt"></i> Demo
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pcard">
+                <div class="pcard-top">
+                    <div class="pcard-icon"><i class="fas fa-cash-register"></i></div>
+                    <span class="pcard-num">02</span>
+                </div>
+                <h3>Swift POS</h3>
+                <p>Enterprise Point of Sale system with real-time inventory tracking, multi-node database sync, and reporting dashboard.</p>
+                <div class="pcard-footer">
+                    <div class="ptags">
+                        <span class="ptag">C#</span>
+                        <span class="ptag">MongoDB</span>
+                        <span class="ptag">.NET</span>
+                    </div>
+                    <div class="pcard-btns">
+                        <a href="https://github.com/talalash123/Swift-Pos-Using-C-Web-App-" target="_blank" class="btn btn-sm btn-accent-sm">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                        <a href="#" class="btn btn-sm btn-ghost-sm">
+                            <i class="fas fa-external-link-alt"></i> Demo
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pcard">
+                <div class="pcard-top">
+                    <div class="pcard-icon"><i class="fas fa-shopping-bag"></i></div>
+                    <span class="pcard-num">03</span>
+                </div>
+                <h3>Trendy Wears</h3>
+                <p>Full-stack e-commerce platform with dynamic product management, MongoDB integration, and a powerful admin dashboard.</p>
+                <div class="pcard-footer">
+                    <div class="ptags">
+                        <span class="ptag">Html CSS</span>
+                        <span class="ptag">MongoDB</span>
+                        <span class="ptag">Flask</span>
+                    </div>
+                    <div class="pcard-btns">
+                        <a href="https://github.com/talalash123/Trendy-Wears-with-Flask" target="_blank" class="btn btn-sm btn-accent-sm">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                        <a href="#" class="btn btn-sm btn-ghost-sm">
+                            <i class="fas fa-external-link-alt"></i> Demo
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pcard">
+                <div class="pcard-top">
+                    <div class="pcard-icon"><i class="fas fa-hotel"></i></div>
+                    <span class="pcard-num">04</span>
+                </div>
+                <h3>The Grand Stay</h3>
+                <p>Comprehensive hotel management system automating room bookings, billing cycles, and complete guest record management.</p>
+                <div class="pcard-footer">
+                    <div class="ptags">
+                        <span class="ptag">.NET</span>
+                        <span class="ptag">C#</span>
+                        <span class="ptag">MOngoDB</span>
+                    </div>
+                    <div class="pcard-btns">
+                        <a href="https://github.com/talalash123/The-Grant-Stay-Using-c-console-based" target="_blank" class="btn btn-sm btn-accent-sm">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                        <a href="#" class="btn btn-sm btn-ghost-sm">
+                            <i class="fas fa-external-link-alt"></i> Demo
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pcard">
+                <div class="pcard-top">
+                    <div class="pcard-icon"><i class="fas fa-robot"></i></div>
+                    <span class="pcard-num">05</span>
+                </div>
+                <h3>AI ChatBot</h3>
+                <p>Intelligent customer support chatbot powered by NLP for automated query resolution and seamless user interactions.</p>
+                <div class="pcard-footer">
+                    <div class="ptags">
+                        <span class="ptag">.Net</span>
+                        <span class="ptag">C#</span>
+                        <span class="ptag">MongoDB</span>
+                    </div>
+                    <div class="pcard-btns">
+                        <a href="https://github.com/talalash123/AI-chatbot-using-C-Sharp" target="_blank" class="btn btn-sm btn-accent-sm">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                        <a href="#" class="btn btn-sm btn-ghost-sm">
+                            <i class="fas fa-external-link-alt"></i> Demo
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pcard">
+                <div class="pcard-top">
+                    <div class="pcard-icon"><i class="fas fa-tasks"></i></div>
+                    <span class="pcard-num">06</span>
+                </div>
+                <h3>Spam Message Detector</h3>
+                <p>Modern productivity app with real-time message spamming checker, and a clean, intuitive user interface.</p>
+                <div class="pcard-footer">
+                    <div class="ptags">
+                        <span class="ptag">Andoid Studio</span>
+                        <span class="ptag">Java</span>
+                    </div>
+                    <div class="pcard-btns">
+                        <a href="https://github.com/talalash123/Spam-Detector-App-Development" target="_blank" class="btn btn-sm btn-accent-sm">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                        <a href="#" class="btn btn-sm btn-ghost-sm">
+                            <i class="fas fa-external-link-alt"></i> Demo
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ─── CONTACT ───────────────────────────────────────── -->
+    <section class="sec" id="contact">
+        <div class="sec-eyebrow"><span>Inquiries</span></div>
+        <div class="contact-wrap">
+            <div class="contact-left">
+                <h3>Let's <span>work<br>together.</span></h3>
+                <p>Open to freelance projects, full-time roles, and interesting collaborations. Feel free to reach out — I respond within 24 hours.</p>
+                <div class="clinks">
+                    <a href="mailto:talalash101@gmail.com" class="cl">
+                        <div class="cl-icon"><i class="fas fa-envelope"></i></div>
+                        talalash101@gmail.com
+                    </a>
+                    <a href="tel:+923434968705" class="cl">
+                        <div class="cl-icon"><i class="fas fa-phone"></i></div>
+                        +92 343 4968705
+                    </a>
+                    <a href="https://github.com/talalash123" target="_blank" class="cl">
+                        <div class="cl-icon"><i class="fab fa-github"></i></div>
+                        github.com/talalash123
+                    </a>
+                    <a href="https://linkedin.com/in/talal-ashraf" target="_blank" class="cl">
+                        <div class="cl-icon"><i class="fab fa-linkedin"></i></div>
+                        linkedin.com/in/talal-ashraf
+                    </a>
+                </div>
+            </div>
+            <form class="form" onsubmit="submitForm(event)">
+                <div class="frow">
+                    <input type="text" placeholder="Your Name" required />
+                    <input type="email" placeholder="Your Email" required />
+                </div>
+                <input type="text" placeholder="Subject" />
+                <textarea placeholder="Tell me about your project..." required></textarea>
+                <button type="submit" class="form-btn" id="fbtn">
+                    <i class="fas fa-paper-plane"></i> Send Message
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- ─── FOOTER ────────────────────────────────────────── -->
+    <footer>
+        <p>© 2026 <strong>M. Talal Ashraf</strong> — Engineered for Performance</p>
+    </footer>
+
+    <script>
+        /* ── typing ── */
+        const words = ["Scalable Systems.", "RESTful APIs.", "Android Apps.", "Secure Backends.", "Clean Solutions."];
+        let wi = 0, ci = 0, del = false;
+        const el = document.getElementById("type-el");
+        function type() {
+            const w = words[wi];
+            el.textContent = del ? w.slice(0, --ci) : w.slice(0, ++ci);
+            let d = del ? 45 : 95;
+            if (!del && ci === w.length) { d = 2400; del = true; }
+            else if (del && ci === 0) { del = false; wi = (wi + 1) % words.length; d = 450; }
+            setTimeout(type, d);
+        }
+        type();
+
+        /* ── form ── */
+        function submitForm(e) {
+            e.preventDefault();
+            const b = document.getElementById("fbtn");
+            b.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+            b.style.background = 'linear-gradient(135deg,#34d399,#059669)';
+            setTimeout(() => {
+                b.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+                b.style.background = '';
+                e.target.reset();
+            }, 3500);
+        }
+
+        /* ── scroll reveal ── */
+        const obs = new IntersectionObserver(es => {
+            es.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.style.opacity = '1';
+                    e.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.08 });
+        document.querySelectorAll('.pcard,.sk-card,.scard,.about-body,.img-frame').forEach(el => {
+            el.style.cssText += 'opacity:0;transform:translateY(28px);transition:opacity .55s ease,transform .55s ease,border-color .3s,box-shadow .3s';
+            obs.observe(el);
+        });
+    </script>
+</body>
+</html>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
